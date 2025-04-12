@@ -129,54 +129,69 @@ class _RolePageState extends State<RolePage> {
                               ),
                             ),
                             const SizedBox(height: 40),
-                            ...List.generate(roles.length, (index) {
-                              return GestureDetector(
-                                onTap: () =>
-                                    setState(() => selectedIndex = index),
-                                child: Container(
+                            Column(
+                              children: List.generate(roles.length, (index) {
+                                return Container(
                                   margin:
                                       const EdgeInsets.symmetric(vertical: 8),
-                                  padding: const EdgeInsets.all(16),
-                                  decoration: BoxDecoration(
-                                    border: Border.all(
-                                      color: selectedIndex == index
-                                          ? Colors.blue
-                                          : Colors.grey.shade300,
-                                    ),
-                                    borderRadius: BorderRadius.circular(12),
-                                    color: selectedIndex == index
-                                        ? Colors.blue.shade50
-                                        : Colors.white,
-                                  ),
-                                  child: Row(
-                                    children: [
-                                      Image.asset(
-                                        roles[index]['imagePath'] as String,
-                                        width: 32,
-                                        height: 32,
-                                      ),
-                                      const SizedBox(width: 12),
-                                      Text(
-                                        roles[index]['label'] as String,
-                                        style: const TextStyle(
-                                          fontSize: 22,
-                                          fontWeight: FontWeight.w700,
-                                          fontFamily: 'Roboto',
+                                  child: GestureDetector(
+                                    onTap: () =>
+                                        setState(() => selectedIndex = index),
+                                    child: Container(
+                                      height: 116,
+                                      padding: const EdgeInsets.all(16),
+                                      decoration: BoxDecoration(
+                                        border: Border.all(
+                                          color: selectedIndex == index
+                                              ? Colors.blue
+                                              : Colors.grey.shade300,
                                         ),
+                                        borderRadius: BorderRadius.circular(12),
+                                        color: selectedIndex == index
+                                            ? Colors.blue.shade50
+                                            : Colors.white,
                                       ),
-                                      const Spacer(),
-                                      Radio<int>(
-                                        value: index,
-                                        groupValue: selectedIndex,
-                                        onChanged: (value) => setState(
-                                            () => selectedIndex = value!),
-                                        activeColor: Colors.blue,
-                                      )
-                                    ],
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          Row(
+                                            children: [
+                                              Image.asset(
+                                                roles[index]['imagePath']
+                                                    as String,
+                                                width: 40,
+                                                height: 45,
+                                              ),
+                                              const Spacer(),
+                                              Radio<int>(
+                                                value: index,
+                                                groupValue: selectedIndex,
+                                                onChanged: (value) => setState(
+                                                    () =>
+                                                        selectedIndex = value!),
+                                                activeColor: Colors.blue,
+                                              ),
+                                            ],
+                                          ),
+                                          const SizedBox(height: 5),
+                                          Text(
+                                            roles[index]['label'] as String,
+                                            style: const TextStyle(
+                                              fontSize: 22,
+                                              fontWeight: FontWeight.w700,
+                                              fontFamily: 'Roboto',
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
                                   ),
-                                ),
-                              );
-                            }),
+                                );
+                              }),
+                            ),
                             const SizedBox(height: 50),
                             Button(
                               text: 'Create Account',
