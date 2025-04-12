@@ -39,11 +39,11 @@ class _SignupPageState extends State<SignupPage> {
             return Stack(
               children: [
                 Positioned(
-                  top: -229,
-                  left: -228,
+                  top: -209,
+                  left: -208,
                   child: Container(
-                    width: 499,
-                    height: 459,
+                    width: 459,
+                    height: 409,
                     decoration: const BoxDecoration(
                       gradient: LinearGradient(
                         colors: [
@@ -60,11 +60,11 @@ class _SignupPageState extends State<SignupPage> {
                   ),
                 ),
                 Positioned(
-                  bottom: -229,
-                  right: -228,
+                  bottom: -209,
+                  right: -208,
                   child: Container(
-                    width: 499,
-                    height: 459,
+                    width: 459,
+                    height: 409,
                     decoration: const BoxDecoration(
                       gradient: LinearGradient(
                         colors: [

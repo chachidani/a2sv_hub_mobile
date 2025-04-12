@@ -39,13 +39,12 @@ class _LoginPageState extends State<LoginPage> {
           builder: (context, constraints) {
             return Stack(
               children: [
-                // Top-left sphere
                 Positioned(
-                  top: -229,
-                  left: -228,
+                  top: -209,
+                  left: -208,
                   child: Container(
-                    width: 499,
-                    height: 459,
+                    width: 459,
+                    height: 409,
                     decoration: const BoxDecoration(
                       gradient: LinearGradient(
                         colors: [
@@ -61,13 +60,12 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                   ),
                 ),
-                // Bottom-right sphere
                 Positioned(
-                  bottom: -229,
-                  right: -228,
+                  bottom: -209,
+                  right: -208,
                   child: Container(
-                    width: 499,
-                    height: 459,
+                    width: 459,
+                    height: 409,
                     decoration: const BoxDecoration(
                       gradient: LinearGradient(
                         colors: [
@@ -83,7 +81,6 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                   ),
                 ),
-                // Scroll content
                 SingleChildScrollView(
                   padding: const EdgeInsets.symmetric(
                       horizontal: 44.0, vertical: 110.0),

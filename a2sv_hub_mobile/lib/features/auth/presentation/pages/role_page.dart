@@ -38,13 +38,12 @@ class _RolePageState extends State<RolePage> {
           builder: (context, constraints) {
             return Stack(
               children: [
-                // Top-left sphere
                 Positioned(
                   top: -229,
                   left: -228,
                   child: Container(
-                    width: 499,
-                    height: 459,
+                    width: 459,
+                    height: 409,
                     decoration: const BoxDecoration(
                       gradient: LinearGradient(
                         colors: [
@@ -60,13 +59,12 @@ class _RolePageState extends State<RolePage> {
                     ),
                   ),
                 ),
-                // Bottom-right sphere
                 Positioned(
                   bottom: -229,
                   right: -228,
                   child: Container(
-                    width: 499,
-                    height: 459,
+                    width: 459,
+                    height: 409,
                     decoration: const BoxDecoration(
                       gradient: LinearGradient(
                         colors: [
@@ -82,7 +80,6 @@ class _RolePageState extends State<RolePage> {
                     ),
                   ),
                 ),
-                // Scroll content
                 SingleChildScrollView(
                   child: Padding(
                     padding: const EdgeInsets.symmetric(

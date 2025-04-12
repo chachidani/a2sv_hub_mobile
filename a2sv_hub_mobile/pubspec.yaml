@@ -77,12 +77,9 @@ flutter:
   assets:
     - assets/images/africa_a2sv.png
     - assets/images/hub.png
-    - assets/images/splash_africa.jpg
-    - assets/images/splash_hub.jpg
     - assets/images/student_icon.jpg
     - assets/images/head_icon.jpg
     - assets/images/academy_icon.jpg
-    - assets/images/splash_image.png
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
