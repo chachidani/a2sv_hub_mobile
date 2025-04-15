@@ -55,7 +55,6 @@ class _SplashScreenWrapperState extends State<SplashScreenWrapper> {
 
   @override
   Widget build(BuildContext context) {
-    return const SplashScreen();
 
     return MultiBlocProvider(
       providers: [

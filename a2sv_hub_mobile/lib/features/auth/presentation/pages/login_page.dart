@@ -125,7 +125,10 @@ class _LoginPageState extends State<LoginPage> {
                           const SizedBox(height: 70),
                           Button(
                             text: 'Login',
-                            onPressed: () => _login(context),
+                            onPressed: () {
+                              _login(context);
+                              context.go(Routes.home);
+                            },
                             color: const Color(0xFF2065D1),
                           ),
                           const SizedBox(height: 17),
