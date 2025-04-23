@@ -49,6 +49,7 @@ dependencies:
   go_router: ^14.8.1
   get_it: ^8.0.3
   flutter_native_splash: ^2.4.6
+  flutter_svg: ^2.1.0
 
 dev_dependencies:
   flutter_test:
@@ -81,6 +82,11 @@ flutter:
     - assets/images/student_icon.jpg
     - assets/images/head_icon.jpg
     - assets/images/academy_icon.jpg
+    - assets/images/logo.png
+    - assets/icons/track.svg
+    - assets/icons/problems.svg
+    - assets/icons/roadmap.svg
+    - assets/icons/contest.svg
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
