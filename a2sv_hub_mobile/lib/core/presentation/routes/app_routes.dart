@@ -5,4 +5,5 @@ class Routes {
   static const String role = '/role';
   static const String home = '/home';
   static const String problem = '/problem';
+  static const String profile = '/profile';
 }

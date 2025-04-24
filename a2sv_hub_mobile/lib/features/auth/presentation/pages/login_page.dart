@@ -120,7 +120,7 @@ class _LoginPageState extends State<LoginPage> {
                             onForgotTap: () =>
                                 debugPrint("Forgot password tapped"),
                             rememberText: 'Remember me',
-                            forgotText: 'Forgot Password?',
+                            forgotText: '',
                           ),
                           const SizedBox(height: 70),
                           Button(
