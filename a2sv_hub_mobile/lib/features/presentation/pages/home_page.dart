@@ -1,3 +1,4 @@
+import 'package:a2sv_hub/core/presentation/widgets/common_app_bar.dart';
 import 'package:a2sv_hub/core/presentation/widgets/sidemenu.dart';
 import 'package:flutter/material.dart';
 import '../widgets/completion_progress.dart';
@@ -33,64 +34,7 @@ class _HomePageState extends State<HomePage> {
         child: SideMenu(),
       ),
       backgroundColor: Colors.white,
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        leading: Builder(builder: (BuildContext context) {
-          return IconButton(
-            icon: const Icon(Icons.menu, color: Colors.black87),
-            onPressed: () {
-              Scaffold.of(context).openDrawer();
-            },
-          );
-        }),
-        actions: [
-          const SizedBox(width: 50),
-          IconButton(
-            icon: const Icon(Icons.search, color: Colors.black87),
-            onPressed: () {},
-          ),
-          const Spacer(),
-          Stack(
-            alignment: Alignment.center,
-            children: [
-              IconButton(
-                icon: const Icon(Icons.notifications_outlined,
-                    color: Colors.black87),
-                onPressed: () {},
-              ),
-              Positioned(
-                top: 8,
-                right: 8,
-                child: Container(
-                  width: 18,
-                  height: 18,
-                  decoration: BoxDecoration(
-                    color: Colors.red,
-                    borderRadius: BorderRadius.circular(9),
-                  ),
-                  child: const Center(
-                    child: Text(
-                      '3',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 10,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-            ],
-          ),
-          const SizedBox(width: 8),
-          const CircleAvatar(
-            radius: 16,
-            backgroundImage: AssetImage('assets/images/profile.png'),
-          ),
-          const SizedBox(width: 16),
-        ],
-      ),
+      appBar: const CommonAppBar(),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(16.0),

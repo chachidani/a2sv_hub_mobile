@@ -1,3 +1,5 @@
+import 'package:a2sv_hub/core/presentation/widgets/common_app_bar.dart';
+import 'package:a2sv_hub/core/presentation/widgets/sidemenu.dart';
 import 'package:flutter/material.dart';
 import '../widgets/filter_button.dart';
 import '../widgets/problem_card.dart';
@@ -88,99 +90,42 @@ class _ProblemPageState extends State<ProblemPage> {
     ];
 
     return Scaffold(
-      backgroundColor: Colors.white,
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        leading: IconButton(
-          icon: const Icon(Icons.menu, color: Colors.black87),
-          onPressed: () {},
-        ),
-        actions: [
-          const SizedBox(width: 50),
-          IconButton(
-            icon: const Icon(Icons.search, color: Colors.black87),
-            onPressed: () {},
-          ),
-          const Spacer(),
-          Stack(
-            alignment: Alignment.center,
-            children: [
-              IconButton(
-                icon: const Icon(Icons.notifications_outlined,
-                    color: Colors.black87),
-                onPressed: () {},
-              ),
-              Positioned(
-                top: 8,
-                right: 8,
-                child: Container(
-                  width: 18,
-                  height: 18,
-                  decoration: BoxDecoration(
-                    color: Colors.red,
-                    borderRadius: BorderRadius.circular(9),
-                  ),
-                  child: const Center(
-                    child: Text(
-                      '3',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 10,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-            ],
-          ),
-          const SizedBox(width: 8),
-          const CircleAvatar(
-            radius: 16,
-            backgroundImage: AssetImage('assets/images/profile.png'),
-          ),
-          const SizedBox(width: 16),
-        ],
+      drawer: const Drawer(
+        backgroundColor: Colors.white,
+        child: SideMenu(),
       ),
+      backgroundColor: Colors.white,
+      appBar: const CommonAppBar(title: 'Problems'),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text(
-              'Problems',
-              style: TextStyle(
-                fontSize: 24,
-                fontWeight: FontWeight.bold,
+            // Categories list
+            SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Row(
+                children: categories
+                    .map(
+                      (category) => Padding(
+                        padding: const EdgeInsets.only(right: 8.0),
+                        child: ProblemCategory(
+                          title: category,
+                          isSelected: _selectedCategory == category,
+                          onTap: () {
+                            setState(() {
+                              _selectedCategory = category;
+                            });
+                          },
+                        ),
+                      ),
+                    )
+                    .toList(),
               ),
             ),
-            const SizedBox(height: 16),
-            // Categories list
-            // SingleChildScrollView(
-            //   scrollDirection: Axis.horizontal,
-            //   child: Row(
-            //     children: categories
-            //         .map(
-            //           (category) => Padding(
-            //             padding: const EdgeInsets.only(right: 8.0),
-            //             child: ProblemCategory(
-            //               title: category,
-            //               isSelected: _selectedCategory == category,
-            //               onTap: () {
-            //                 setState(() {
-            //                   _selectedCategory = category;
-            //                 });
-            //               },
-            //             ),
-            //           ),
-            //         )
-            //         .toList(),
-            //   ),
-            // ),
-        
+
             const SizedBox(height: 16.0),
-        
+
             // Filter button
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16.0),
@@ -191,9 +136,9 @@ class _ProblemPageState extends State<ProblemPage> {
                 filterCount: null,
               ),
             ),
-        
+
             const SizedBox(height: 16.0),
-        
+
             // Problems list
             Expanded(
               child: ListView.builder(
@@ -208,7 +153,8 @@ class _ProblemPageState extends State<ProblemPage> {
                     onTap: () {
                       // Navigate to problem details
                     },
-                    onToggleComplete: () => _toggleProblemCompletion(problem.id),
+                    onToggleComplete: () =>
+                        _toggleProblemCompletion(problem.id),
                     onOpenDetails: () {
                       // Open problem details in a new page
                     },
