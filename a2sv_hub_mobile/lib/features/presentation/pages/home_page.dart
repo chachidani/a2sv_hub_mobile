@@ -1,3 +1,4 @@
+import 'package:a2sv_hub/core/presentation/widgets/sidemenu.dart';
 import 'package:flutter/material.dart';
 import '../widgets/completion_progress.dart';
 import '../widgets/consistency_grid.dart';
@@ -27,14 +28,22 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: const Drawer(
+        backgroundColor: Colors.white,
+        child: SideMenu(),
+      ),
       backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
-        leading: IconButton(
-          icon: const Icon(Icons.menu, color: Colors.black87),
-          onPressed: () {},
-        ),
+        leading: Builder(builder: (BuildContext context) {
+          return IconButton(
+            icon: const Icon(Icons.menu, color: Colors.black87),
+            onPressed: () {
+              Scaffold.of(context).openDrawer();
+            },
+          );
+        }),
         actions: [
           const SizedBox(width: 50),
           IconButton(
