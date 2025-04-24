@@ -5,6 +5,7 @@ import '../widgets/consistency_grid.dart';
 import '../widgets/custom_button.dart';
 import '../widgets/stats_card.dart';
 import '../widgets/welcome_card.dart';
+import 'problem_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -100,7 +101,12 @@ class _HomePageState extends State<HomePage> {
                 child: WelcomeCard(
                   title: 'Live the moment for the moment',
                   username: 'Amy',
-                  onProblemsTap: () {},
+                  onProblemsTap: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                          builder: (context) => const ProblemPage()),
+                    );
+                  },
                 ),
               ),
 
