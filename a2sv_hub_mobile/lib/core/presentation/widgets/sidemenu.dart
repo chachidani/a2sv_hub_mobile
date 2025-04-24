@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:go_router/go_router.dart';
+
+import '../routes/app_routes.dart';
 
 class SideMenu extends StatelessWidget {
   const SideMenu({super.key});
@@ -98,7 +101,7 @@ class SideMenu extends StatelessWidget {
               style: TextStyle(color: Color(0xFF8C8787), fontSize: 13),
             ),
             onTap: () {
-              Navigator.pushNamed(context, '/');
+              context.go(Routes.home);
             },
           ),
           ListTile(
@@ -127,7 +130,9 @@ class SideMenu extends StatelessWidget {
               "Problems",
               style: TextStyle(color: Color(0xFF8C8787), fontSize: 13),
             ),
-            onTap: () {},
+            onTap: () {
+              context.go(Routes.problem);
+            },
           ),
           ListTile(
             contentPadding: const EdgeInsets.only(left: 28.0),
@@ -141,7 +146,9 @@ class SideMenu extends StatelessWidget {
               "Contests",
               style: TextStyle(color: Color(0xFF8C8787), fontSize: 13),
             ),
-            onTap: () {},
+            onTap: () {
+              context.go(Routes.contests);
+            },
           ),
           ListTile(
             contentPadding: const EdgeInsets.only(left: 28.0),
@@ -179,7 +186,9 @@ class SideMenu extends StatelessWidget {
               "Users",
               style: TextStyle(color: Color(0xFF8C8787), fontSize: 13),
             ),
-            onTap: () {},
+            onTap: () {
+              context.go(Routes.profile);
+            },
           ),
           const Padding(
             padding: EdgeInsets.symmetric(horizontal: 8),
