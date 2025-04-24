@@ -1,13 +1,10 @@
 import 'package:a2sv_hub/core/presentation/routes/app_routes.dart';
 import 'package:a2sv_hub/core/presentation/widgets/button.dart';
-import 'package:a2sv_hub/features/auth/presentation/Bloc/auth_bloc.dart';
-import 'package:a2sv_hub/features/auth/presentation/Bloc/auth_event.dart';
 import 'package:a2sv_hub/features/auth/presentation/widgets/buttom_text.dart';
 import 'package:a2sv_hub/features/auth/presentation/widgets/check_box.dart';
 import 'package:a2sv_hub/features/auth/presentation/widgets/header.dart';
 import 'package:a2sv_hub/features/auth/presentation/widgets/login_form.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 class LoginPage extends StatefulWidget {
@@ -150,8 +147,9 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   void _login(BuildContext context) {
-    context.read<AuthBloc>().add(
-          AuthLoginEvent(_emailController.text, _passwordController.text),
-        );
+    context.go(Routes.contests);
+    // context.read<AuthBloc>().add(
+    //       AuthLoginEvent(_emailController.text, _passwordController.text),
+    //     );
   }
 }

@@ -49,6 +49,7 @@ dependencies:
   go_router: ^14.8.1
   get_it: ^8.0.3
   flutter_native_splash: ^2.4.6
+  fl_chart: ^0.71.0
 
 dev_dependencies:
   flutter_test:
@@ -75,11 +76,12 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-    - assets/images/africa_a2sv.png
-    - assets/images/hub.png
-    - assets/images/student_icon.jpg
-    - assets/images/head_icon.jpg
-    - assets/images/academy_icon.jpg
+    - assets/images/
+    # - assets/images/africa_a2sv.png
+    # - assets/images/hub.png
+    # - assets/images/student_icon.jpg
+    # - assets/images/head_icon.jpg
+    # - assets/images/academy_icon.jpg
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
