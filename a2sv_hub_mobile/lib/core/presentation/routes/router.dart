@@ -5,31 +5,33 @@ import 'package:go_router/go_router.dart';
 
 import '../../../features/presentation/pages/home_page.dart';
 import '../../../features/presentation/pages/problem_page.dart';
+import '../../../features/presentation/pages/profile_page.dart';
 import 'app_routes.dart';
 
-final router = GoRouter(
-  initialLocation: '/role',
-  routes: <RouteBase>[
-    //! Auth -------------------------------------------------------------------
-    GoRoute(
-      path: Routes.role,
-      builder: (context, state) => const RolePage(),
-    ),
-    GoRoute(
-      path: Routes.login,
-      builder: (context, state) => const LoginPage(),
-    ),
-    GoRoute(
-      path: Routes.signup,
-      builder: (context, state) => const SignupPage(),
-    ),
-    GoRoute(
-      path: Routes.home,
-      builder: (context, state) => const HomePage(),
-    ),
-    GoRoute(
-      path: Routes.problem,
-      builder: (context, state) => const ProblemPage(),
-    ),
-  ]
-);
+final router = GoRouter(initialLocation: '/profile', routes: <RouteBase>[
+  //! Auth -------------------------------------------------------------------
+  GoRoute(
+    path: Routes.role,
+    builder: (context, state) => const RolePage(),
+  ),
+  GoRoute(
+    path: Routes.login,
+    builder: (context, state) => const LoginPage(),
+  ),
+  GoRoute(
+    path: Routes.signup,
+    builder: (context, state) => const SignupPage(),
+  ),
+  GoRoute(
+    path: Routes.home,
+    builder: (context, state) => const HomePage(),
+  ),
+  GoRoute(
+    path: Routes.problem,
+    builder: (context, state) => const ProblemPage(),
+  ),
+  GoRoute(
+    path: Routes.profile,
+    builder: (context, state) => const ProfilePage(),
+  ),
+]);
