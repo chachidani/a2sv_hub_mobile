@@ -120,7 +120,7 @@ class _LoginPageState extends State<LoginPage> {
                             onForgotTap: () =>
                                 debugPrint("Forgot password tapped"),
                             rememberText: 'Remember me',
-                            forgotText: '',
+                            forgotText: 'Forgot Password?',
                           ),
                           const SizedBox(height: 70),
                           Button(
@@ -153,8 +153,9 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   void _login(BuildContext context) {
-    context.read<AuthBloc>().add(
-          AuthLoginEvent(_emailController.text, _passwordController.text),
-        );
+    context.go(Routes.contests);
+    // context.read<AuthBloc>().add(
+    //       AuthLoginEvent(_emailController.text, _passwordController.text),
+    //     );
   }
 }
