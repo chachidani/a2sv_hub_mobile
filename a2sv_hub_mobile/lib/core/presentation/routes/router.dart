@@ -2,7 +2,9 @@ import 'package:a2sv_hub/features/auth/presentation/pages/login_page.dart';
 import 'package:a2sv_hub/features/auth/presentation/pages/role_page.dart';
 import 'package:a2sv_hub/features/auth/presentation/pages/signup_page.dart';
 import 'package:a2sv_hub/features/contests/presentation/pages/contests.dart';
-import 'package:a2sv_hub/features/contests/presentation/pages/profile.dart';
+import 'package:a2sv_hub/features/contests/presentation/pages/profile.dart'
+    as contests_profile;
+import 'package:a2sv_hub/features/contests/presentation/pages/users.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../features/presentation/pages/home_page.dart';
@@ -27,6 +29,8 @@ final router = GoRouter(initialLocation: '/profile', routes: <RouteBase>[
   GoRoute(
     path: Routes.contests,
     builder: (context, state) => const ContestPage(),
+  ),
+  GoRoute(
     path: Routes.home,
     builder: (context, state) => const HomePage(),
   ),
@@ -36,6 +40,10 @@ final router = GoRouter(initialLocation: '/profile', routes: <RouteBase>[
   ),
   GoRoute(
     path: Routes.profile,
-    builder: (context, state) => const ProfilePage(),
+    builder: (context, state) => const contests_profile.ProfilePage(),
+  ),
+  GoRoute(
+    path: Routes.users,
+    builder: (context, state) => const UsersPage(),
   ),
 ]);

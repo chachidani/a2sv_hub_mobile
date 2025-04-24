@@ -7,4 +7,5 @@ class Routes {
   static const String home = '/home';
   static const String problem = '/problem';
   static const String profile = '/profile';
+  static const String users = '/users';
 }

@@ -63,7 +63,9 @@ class ProfileModal extends StatelessWidget {
             ListTile(
               contentPadding: EdgeInsets.zero,
               title: const Text('Settings'),
-              onTap: () {},
+              onTap: () {
+                context.go('/users');
+              },
             ),
             ListTile(
               contentPadding: EdgeInsets.zero,
