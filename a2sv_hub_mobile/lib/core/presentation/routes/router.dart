@@ -35,3 +35,4 @@ final router = GoRouter(initialLocation: '/profile', routes: <RouteBase>[
     builder: (context, state) => const ProfilePage(),
   ),
 ]);
+
