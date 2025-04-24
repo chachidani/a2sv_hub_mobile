@@ -30,7 +30,11 @@ class MyApp extends StatelessWidget {
         routerConfig: router,
         title: 'A2SV Hub',
         debugShowCheckedModeBanner: false,
-      ),
+        theme: ThemeData(
+          colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xFF2065D1)),
+          useMaterial3: true,
+        ),
+      ],
     );
   }
 }

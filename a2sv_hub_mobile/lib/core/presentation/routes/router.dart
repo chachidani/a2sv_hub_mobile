@@ -5,9 +5,12 @@ import 'package:a2sv_hub/features/contests/presentation/pages/contests.dart';
 import 'package:a2sv_hub/features/contests/presentation/pages/profile.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../../features/presentation/pages/home_page.dart';
+import '../../../features/presentation/pages/problem_page.dart';
+import '../../../features/presentation/pages/profile_page.dart';
 import 'app_routes.dart';
 
-final router = GoRouter(initialLocation: '/role', routes: <RouteBase>[
+final router = GoRouter(initialLocation: '/profile', routes: <RouteBase>[
   //! Auth -------------------------------------------------------------------
   GoRoute(
     path: Routes.role,
@@ -24,6 +27,12 @@ final router = GoRouter(initialLocation: '/role', routes: <RouteBase>[
   GoRoute(
     path: Routes.contests,
     builder: (context, state) => const ContestPage(),
+    path: Routes.home,
+    builder: (context, state) => const HomePage(),
+  ),
+  GoRoute(
+    path: Routes.problem,
+    builder: (context, state) => const ProblemPage(),
   ),
   GoRoute(
     path: Routes.profile,
