@@ -1,8 +1,10 @@
+import 'package:a2sv_hub/core/presentation/widgets/dropdown.dart';
 import 'package:a2sv_hub/features/contests/presentation/widgets/header.dart';
 import 'package:a2sv_hub/features/contests/presentation/widgets/notification_modal.dart';
 import 'package:a2sv_hub/features/contests/presentation/widgets/profile_modal.dart';
 import 'package:a2sv_hub/features/presentation/widgets/profile_tab_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class UsersPage extends StatefulWidget {
   const UsersPage({super.key});
@@ -81,6 +83,7 @@ class _UsersPageState extends State<UsersPage> {
                   Expanded(
                     child: _buildTabContent(),
                   ),
+                  const SizedBox(height: 40),
                 ],
               ),
             ),
@@ -89,7 +92,7 @@ class _UsersPageState extends State<UsersPage> {
               child: Padding(
                 padding: const EdgeInsets.only(right: 12.0),
                 child: Image.asset(
-                  'assets/images/themee.png',
+                  'assets/images/theme.jpg',
                   width: 50,
                   height: 50,
                 ),
@@ -112,6 +115,16 @@ class _UsersPageState extends State<UsersPage> {
   }
 
   Widget _buildUsersTabContent() {
+    final users = List.generate(
+      5,
+      (index) => {
+        'name': 'User $index',
+        'role': 'Student',
+        'group': 'G${index + 1}k',
+        'image': 'assets/images/africa_a2sv.png',
+      },
+    );
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -155,94 +168,255 @@ class _UsersPageState extends State<UsersPage> {
             prefixIcon: const Icon(Icons.search),
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10),
-              borderSide: const BorderSide(
-                color: Color(0x63738130),
-              ),
+              borderSide: const BorderSide(color: Color(0x63738130)),
             ),
           ),
-          style: const TextStyle(height: 2.0),
+          style: const TextStyle(height: 1.6),
         ),
         const SizedBox(height: 25),
-        DropdownButtonFormField<String>(
+        CustomDropdown(
           value: 'All',
-          items: ['All', 'Students', 'Teachers'].map((e) {
-            return DropdownMenuItem(value: e, child: Text(e));
-          }).toList(),
-          onChanged: (val) {},
-          decoration: InputDecoration(
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(10),
-            ),
-          ),
+          items: const ['All', 'Students', 'Heads'],
+          onChanged: (String? value) {},
         ),
-        const SizedBox(height: 40),
-        SingleChildScrollView(
-          child: SizedBox(
-            height: 450,
-            child: Card(
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(20),
-              ),
-              elevation: 4,
-              child: Stack(
-                children: [
-                  Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20),
-                      gradient: LinearGradient(
-                        colors: [
-                          Colors.white,
-                          Colors.white,
-                          Colors.black.withOpacity(0.5),
-                        ],
-                        begin: Alignment.topCenter,
-                        end: Alignment.bottomCenter,
-                        stops: const [0, 0.5, 1],
-                      ),
-                      image: DecorationImage(
-                        image:
-                            const AssetImage('assets/images/africa_a2sv.png'),
-                        fit: BoxFit.cover,
-                        colorFilter: ColorFilter.mode(
-                          Colors.black.withOpacity(0.5),
-                          BlendMode.darken,
-                        ),
-                      ),
-                    ),
+        const SizedBox(height: 25),
+        Expanded(
+          child: ListView.builder(
+            itemCount: users.length,
+            itemBuilder: (context, index) {
+              final user = users[index];
+              return Padding(
+                padding: const EdgeInsets.only(bottom: 20),
+                child: Card(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20),
                   ),
-                  const Align(
+                  elevation: 4,
+                  child: Stack(
                     alignment: Alignment.center,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        CircleAvatar(
-                          backgroundImage:
-                              AssetImage('assets/images/africa_a2sv.png'),
-                          radius: 40,
-                        ),
-                        SizedBox(height: 12),
-                        Text(
-                          'Amy Santiago Watson',
-                          style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.black,
+                    children: [
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Container(
+                            height: 200,
+                            width: double.infinity,
+                            decoration: BoxDecoration(
+                              borderRadius: const BorderRadius.vertical(
+                                top: Radius.circular(20),
+                              ),
+                              image: DecorationImage(
+                                image: AssetImage(user['image']!),
+                                fit: BoxFit.cover,
+                                colorFilter: ColorFilter.mode(
+                                  Colors.black.withOpacity(0.5),
+                                  BlendMode.darken,
+                                ),
+                              ),
+                            ),
+                          ),
+                          Container(
+                            height: 300,
+                            padding: const EdgeInsets.all(20),
+                            decoration: const BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: const BorderRadius.vertical(
+                                bottom: Radius.circular(20),
+                              ),
+                            ),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                const SizedBox(height: 35),
+                                Text(
+                                  user['name']!,
+                                  style: const TextStyle(
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.black,
+                                  ),
+                                ),
+                                const SizedBox(height: 1),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text(
+                                      user['role']!,
+                                      style: const TextStyle(
+                                        fontSize: 16,
+                                        color: Color(0xFF637381),
+                                      ),
+                                    ),
+                                    const SizedBox(width: 13),
+                                    Text(
+                                      user['group']!,
+                                      style: const TextStyle(
+                                        fontSize: 16,
+                                        color: Color(0xFF637381),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                const SizedBox(height: 20),
+                                const Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Image(
+                                      image:
+                                          AssetImage('assets/images/Frame.png'),
+                                      height: 20,
+                                      width: 20,
+                                    ),
+                                    SizedBox(width: 20),
+                                    Image(
+                                      image: AssetImage(
+                                          'assets/images/Frame (1).png'),
+                                      height: 20,
+                                      width: 20,
+                                    ),
+                                    SizedBox(width: 20),
+                                    Image(
+                                      image: AssetImage(
+                                          'assets/images/Frame (2).png'),
+                                      height: 20,
+                                      width: 20,
+                                    ),
+                                    SizedBox(width: 20),
+                                    Image(
+                                      image: AssetImage(
+                                          'assets/images/Frame (3).png'),
+                                      height: 20,
+                                      width: 20,
+                                    ),
+                                    SizedBox(width: 20),
+                                    Image(
+                                      image: AssetImage(
+                                          'assets/images/Frame (4).png'),
+                                      height: 20,
+                                      width: 20,
+                                    ),
+                                  ],
+                                ),
+                                const SizedBox(height: 30),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    Column(
+                                      children: [
+                                        Text(
+                                          'Problems',
+                                          style: TextStyle(
+                                            fontFamily: 'Roboto',
+                                            fontSize: 16,
+                                            fontWeight: FontWeight.w400,
+                                            color:
+                                                Colors.black.withOpacity(0.5),
+                                          ),
+                                        ),
+                                        const SizedBox(height: 10),
+                                        Text(
+                                          '132',
+                                          style: TextStyle(
+                                            fontFamily: 'Roboto',
+                                            fontSize: 16,
+                                            fontWeight: FontWeight.w400,
+                                            color:
+                                                Colors.black.withOpacity(0.5),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                    const SizedBox(width: 20),
+                                    Column(
+                                      children: [
+                                        Text(
+                                          'Submissions',
+                                          style: TextStyle(
+                                            fontFamily: 'Roboto',
+                                            fontSize: 16,
+                                            fontWeight: FontWeight.w400,
+                                            color:
+                                                Colors.black.withOpacity(0.5),
+                                          ),
+                                        ),
+                                        const SizedBox(height: 10),
+                                        Text(
+                                          '138',
+                                          style: TextStyle(
+                                            fontFamily: 'Roboto',
+                                            fontSize: 16,
+                                            fontWeight: FontWeight.w400,
+                                            color:
+                                                Colors.black.withOpacity(0.5),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                    const SizedBox(width: 20),
+                                    Column(
+                                      children: [
+                                        Text(
+                                          'Dedicated Time',
+                                          style: TextStyle(
+                                            fontFamily: 'Roboto',
+                                            fontSize: 16,
+                                            fontWeight: FontWeight.w400,
+                                            color:
+                                                Colors.black.withOpacity(0.5),
+                                          ),
+                                        ),
+                                        const SizedBox(height: 10),
+                                        Text(
+                                          '1.93k',
+                                          style: TextStyle(
+                                            fontFamily: 'Roboto',
+                                            fontSize: 16,
+                                            fontWeight: FontWeight.w400,
+                                            color:
+                                                Colors.black.withOpacity(0.5),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                                const SizedBox(height: 20),
+                                GestureDetector(
+                                  onTap: () {
+                                    context.go('/profile');
+                                  },
+                                  child: const Text(
+                                    'View Profile',
+                                    style: TextStyle(
+                                      fontFamily: 'Roboto',
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w700,
+                                      color: Color(0xFF2065D1),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                      Positioned(
+                        top: 165,
+                        child: Align(
+                          alignment: Alignment.center,
+                          child: CircleAvatar(
+                            backgroundImage: AssetImage(user['image']!),
+                            radius: 35,
                           ),
                         ),
-                        SizedBox(height: 4),
-                        Text(
-                          'Student',
-                          style: TextStyle(
-                            fontSize: 16,
-                            color: Colors.white70,
-                          ),
-                        ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
-                ],
-              ),
-            ),
+                ),
+              );
+            },
           ),
         ),
       ],
@@ -250,8 +424,125 @@ class _UsersPageState extends State<UsersPage> {
   }
 
   Widget _buildGroupTabContent() {
-    return const Center(
-      child: Text('Groups Tab Content'),
+    final List<Map<String, dynamic>> groups = [
+      {
+        'name': 'AAiT Group 51',
+        'code': 'G51',
+        'members': 20,
+        'timeSpent': 202450,
+        'avgRating': 1405,
+      },
+      {
+        'name': 'Ghana Group 60',
+        'code': 'G51',
+        'members': 20,
+        'timeSpent': 202450,
+        'avgRating': 1405,
+      },
+      {
+        'name': 'AAiT Group 51',
+        'code': 'G51',
+        'members': 20,
+        'timeSpent': 202450,
+        'avgRating': 1405,
+      },
+    ];
+    return ListView.builder(
+      itemCount: groups.length,
+      itemBuilder: (context, index) {
+        final group = groups[index];
+        final bool isSelected = index == 0;
+
+        return Container(
+          height: 287,
+          margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+          decoration: BoxDecoration(
+            border: Border.all(
+              color: isSelected ? Colors.blue : Colors.grey.shade300,
+              width: 2,
+            ),
+            borderRadius: BorderRadius.circular(12),
+          ),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(
+              horizontal: 27.0,
+              vertical: 37.0,
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(group['name'],
+                    style: const TextStyle(
+                        fontSize: 20, fontWeight: FontWeight.bold)),
+                const SizedBox(height: 11),
+                Text(
+                  '${group['code']} · ${group['members']} Members',
+                  style: const TextStyle(
+                    color: Color(0xFF637381),
+                  ),
+                ),
+                const SizedBox(height: 90),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    const Image(
+                      image: AssetImage('assets/images/Rectangle 549.png'),
+                      height: 40,
+                      width: 3,
+                    ),
+                    const SizedBox(width: 10),
+                    Column(
+                      children: [
+                        const Text(
+                          'Time Spent',
+                          style: const TextStyle(
+                            fontSize: 12,
+                            color: Color(0xFF637381),
+                          ),
+                        ),
+                        const SizedBox(height: 4),
+                        Text(
+                          '${group['timeSpent']}',
+                          style: const TextStyle(
+                            fontSize: 12,
+                            color: Color(0xFF637381),
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(width: 40),
+                    const Image(
+                      image: AssetImage('assets/images/Rectangle 549.png'),
+                      height: 40,
+                      width: 3,
+                    ),
+                    const SizedBox(width: 10),
+                    Column(
+                      children: [
+                        const Text(
+                          'Avg. Rating',
+                          style: const TextStyle(
+                            fontSize: 12,
+                            color: Color(0xFF637381),
+                          ),
+                        ),
+                        const SizedBox(height: 4),
+                        Text(
+                          '${group['avgRating']}',
+                          style: const TextStyle(
+                            fontSize: 12,
+                            color: Color(0xFF637381),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        );
+      },
     );
   }
 }
