@@ -1,10 +1,13 @@
+import 'package:a2sv_hub/core/presentation/routes/routes.dart';
 import 'package:a2sv_hub/core/presentation/widgets/button.dart';
 import 'package:a2sv_hub/core/presentation/widgets/common_app_bar.dart';
 import 'package:a2sv_hub/core/presentation/widgets/dropdown.dart';
 import 'package:a2sv_hub/core/presentation/widgets/head_input_field.dart';
+import 'package:a2sv_hub/core/presentation/widgets/labeled_dropdown.dart';
 import 'package:a2sv_hub/core/presentation/widgets/sidemenu.dart';
 import 'package:a2sv_hub/features/presentation/widgets/profile_tab_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class HeadContestPage extends StatefulWidget {
   const HeadContestPage({super.key});
@@ -97,7 +100,7 @@ class _HeadContestPageState extends State<HeadContestPage> {
           ],
         ),
         const SizedBox(height: 20),
-        CustomDropdown(
+        LabeledCustomDropdown(
           value: 'InPerson',
           items: const ['InPerson', 'Students', 'Teachers'],
           onChanged: (String? value) {},
@@ -111,7 +114,9 @@ class _HeadContestPageState extends State<HeadContestPage> {
         const SizedBox(height: 38),
         Button(
           text: 'Submit',
-          onPressed: () {},
+          onPressed: () {
+            context.go(Routes.headTrack);
+          },
           color: const Color(0x2E637381),
           text_color: const Color(0xFF637381),
         ),
@@ -184,7 +189,8 @@ class _HeadContestPageState extends State<HeadContestPage> {
             hint: 'Paste contest link for Div2',
           ),
           const SizedBox(height: 20),
-          CustomDropdown(
+          LabeledCustomDropdown(
+            label: 'Select Super Group',
             value: 'InPerson',
             items: const ['InPerson', 'Students', 'Teachers'],
             onChanged: (String? value) {},

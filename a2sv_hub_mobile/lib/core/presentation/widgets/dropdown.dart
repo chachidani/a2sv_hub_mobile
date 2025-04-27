@@ -33,17 +33,55 @@ class CustomDropdown extends StatelessWidget {
             border: InputBorder.none,
           ),
           value: value,
+          selectedItemBuilder: (context) {
+            return items.map((e) {
+              return Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  e,
+                  style: const TextStyle(
+                    fontFamily: 'Roboto',
+                    fontSize: 16,
+                    fontWeight: FontWeight.w400,
+                    color: Color(0xFF637381),
+                  ),
+                ),
+              );
+            }).toList();
+          },
           items: items.map((e) {
             return DropdownMenuItem(
               value: e,
-              child: Text(
-                e,
-                style: const TextStyle(
-                  fontFamily: 'Roboto',
-                  fontSize: 16,
-                  fontWeight: FontWeight.w400,
-                  color: Color(0xFF8C8787),
-                ),
+              child: Row(
+                children: [
+                  Container(
+                    width: 20,
+                    height: 20,
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                        color: const Color(0xFF637381),
+                      ),
+                      borderRadius: BorderRadius.circular(4),
+                    ),
+                    child: value == e
+                        ? const Icon(
+                            Icons.check,
+                            size: 16,
+                            color: Color(0xFF637381),
+                          )
+                        : null,
+                  ),
+                  const SizedBox(width: 10),
+                  Text(
+                    e,
+                    style: const TextStyle(
+                      fontFamily: 'Roboto',
+                      fontSize: 16,
+                      fontWeight: FontWeight.w400,
+                      color: Color(0xFF637381),
+                    ),
+                  ),
+                ],
               ),
             );
           }).toList(),
