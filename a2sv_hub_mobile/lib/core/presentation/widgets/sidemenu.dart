@@ -70,18 +70,19 @@ class SideMenu extends StatelessWidget {
                     ),
                     const SizedBox(width: 20),
                     const Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            "Jack Santiago",
-                            style: TextStyle(color: Colors.black),
-                          ),
-                          Text(
-                            "Student",
-                            style: TextStyle(
-                                color: Color(0xFF8C8787), fontSize: 13),
-                          )
-                        ])
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "Jack Santiago",
+                          style: TextStyle(color: Colors.black),
+                        ),
+                        Text(
+                          "Student",
+                          style:
+                              TextStyle(color: Color(0xFF8C8787), fontSize: 13),
+                        )
+                      ],
+                    )
                   ],
                 ),
               ),
@@ -116,7 +117,9 @@ class SideMenu extends StatelessWidget {
               "Tracks",
               style: TextStyle(color: Color(0xFF8C8787), fontSize: 13),
             ),
-            onTap: () {},
+            onTap: () {
+              context.go(Routes.head_problem);
+            },
           ),
           ListTile(
             contentPadding: const EdgeInsets.only(left: 28.0),
@@ -174,7 +177,9 @@ class SideMenu extends StatelessWidget {
               "Groups",
               style: TextStyle(color: Color(0xFF8C8787), fontSize: 13),
             ),
-            onTap: () {},
+            onTap: () {
+              context.go(Routes.users);
+            },
           ),
           ListTile(
             contentPadding: const EdgeInsets.only(left: 28.0),
