@@ -4,12 +4,14 @@ class Button extends StatelessWidget {
   final String text;
   final void Function() onPressed;
   final Color color;
+  final Color text_color;
 
   const Button({
     super.key,
     required this.text,
     required this.onPressed,
-    this.color = const Color(0xFF2065D1),
+    required this.color,
+    required this.text_color,
   });
 
   @override
@@ -21,15 +23,15 @@ class Button extends StatelessWidget {
         onPressed: onPressed,
         style: OutlinedButton.styleFrom(
           backgroundColor: color,
-          side: BorderSide(color: color, width: 2),
+          side: BorderSide(color: color),
           shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(8),
+            borderRadius: BorderRadius.circular(8),
           ),
         ),
         child: Text(
           text,
-          style: const TextStyle(
-            color: Colors.white,
+          style: TextStyle(
+            color: text_color,
             fontFamily: 'Inter_28pt',
             fontSize: 20,
             fontWeight: FontWeight.w700,
@@ -39,4 +41,3 @@ class Button extends StatelessWidget {
     );
   }
 }
-

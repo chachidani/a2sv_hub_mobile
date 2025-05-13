@@ -1,24 +1,14 @@
 import 'package:flutter/material.dart';
 
-class Input extends StatelessWidget {
-  const Input({
+class InputField extends StatelessWidget {
+  const InputField({
     super.key,
-    required this.controller,
     this.hint,
-    this.maxLines,
     this.keyboardType,
-    this.validator,
-    this.isPassword = false,
-    this.isMultiline = false,
   });
 
-  final TextEditingController? controller;
   final String? hint;
-  final bool isPassword;
-  final bool isMultiline;
-  final int? maxLines;
   final TextInputType? keyboardType;
-  final String? Function(String?)? validator;
 
   @override
   Widget build(BuildContext context) {
@@ -27,8 +17,8 @@ class Input extends StatelessWidget {
       children: [
         const SizedBox(height: 5),
         Container(
+          height: 56,
           padding: const EdgeInsets.symmetric(horizontal: 12),
-          height: isMultiline ? 100 : 57,
           decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.circular(10),
@@ -37,14 +27,7 @@ class Input extends StatelessWidget {
               width: 2,
             ),
           ),
-          alignment: Alignment.center,
           child: TextFormField(
-            controller: controller,
-            obscureText: isPassword,
-            maxLines: maxLines ?? (isMultiline ? 5 : 1),
-            keyboardType: keyboardType ??
-                (isMultiline ? TextInputType.multiline : TextInputType.text),
-            validator: validator,
             decoration: InputDecoration(
               border: const OutlineInputBorder(
                 borderRadius: BorderRadius.all(Radius.circular(10)),
@@ -53,7 +36,7 @@ class Input extends StatelessWidget {
               hintText: hint,
               hintStyle: const TextStyle(
                 color: Color(0xFF8C8787),
-                fontSize: 19,
+                fontSize: 16,
                 height: 1.05,
                 fontFamily: 'Roboto',
                 fontWeight: FontWeight.w400,

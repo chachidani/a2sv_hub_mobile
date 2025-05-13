@@ -126,6 +126,7 @@ class _SignupPageState extends State<SignupPage> {
                           Button(
                             text: 'Sign Up',
                             onPressed: _submit,
+                            text_color: Colors.white,
                             color: const Color(0xFF2065D1),
                           ),
                           const SizedBox(height: 17),

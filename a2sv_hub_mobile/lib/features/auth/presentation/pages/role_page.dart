@@ -107,7 +107,6 @@ class _RolePageState extends State<RolePage> {
                                 height: 50,
                               ),
                               const SizedBox(width: 12),
-                              
                               Radio<int>(
                                 materialTapTargetSize:
                                     MaterialTapTargetSize.shrinkWrap,
@@ -143,6 +142,8 @@ class _RolePageState extends State<RolePage> {
                 onPressed: () {
                   context.go('/signup', extra: selectedIndex);
                 },
+                color: const Color(0xFF2065D1),
+                text_color: Colors.white,
               ),
 
               const SizedBox(height: 12),

@@ -81,7 +81,7 @@ class ProfileTabBar extends StatelessWidget {
     );
   }
 
-  IconData _getIconForTab(String tab) {
+  IconData? _getIconForTab(String tab) {
     switch (tab.toLowerCase()) {
       case 'profile':
         return Icons.person;
@@ -89,6 +89,14 @@ class ProfileTabBar extends StatelessWidget {
         return Icons.code;
       case 'contests':
         return Icons.bar_chart;
+      case 'groups':
+        return null;
+      case 'users':
+        return null;
+      case 'standard contest':
+        return null;
+      case 'super contest':
+        return null;
       default:
         return Icons.circle;
     }

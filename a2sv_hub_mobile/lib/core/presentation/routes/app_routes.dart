@@ -7,4 +7,9 @@ class Routes {
   static const String home = '/home';
   static const String problem = '/problem';
   static const String profile = '/profile';
+  static const String users = '/users';
+  static const String head_problem = '/head_problem';
+  static const String head_constest = '/head_constest';
+  static const String headTrack = '/head_track';
+  static const String headExercise = '/head_exercise';
 }
