@@ -3,11 +3,9 @@ import 'package:a2sv_hub/core/presentation/widgets/sidemenu.dart';
 import 'package:flutter/material.dart';
 import '../widgets/completion_progress.dart';
 import '../widgets/consistency_grid.dart';
-import '../widgets/custom_button.dart';
 import '../widgets/stats_card.dart';
 import '../widgets/welcome_card.dart';
 import 'problem_page.dart';
-import 'package:go_router/go_router.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -95,7 +93,7 @@ class _HomePageState extends State<HomePage> {
               const SizedBox(height: 16.0),
 
               // Personal Completion
-              CompletionProgress(
+              const CompletionProgress(
                 title: 'Personal Completion',
                 details:
                     '225 Exercises | 138 Solved | 61% Completion | 87 Available',
