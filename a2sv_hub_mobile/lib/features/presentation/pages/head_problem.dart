@@ -101,7 +101,9 @@ class HeadProblemPage extends StatelessWidget {
                   width: MediaQuery.of(context).size.width * 0.4,
                   child: Button(
                     text: 'Delete',
-                    onPressed: () {},
+                    onPressed: () {
+                      context.go(Routes.headAttendence);
+                    },
                     color: const Color(0x2E637381),
                     text_color: const Color(0xFF637381),
                   ),

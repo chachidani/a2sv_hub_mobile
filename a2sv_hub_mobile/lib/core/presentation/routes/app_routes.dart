@@ -12,4 +12,5 @@ class Routes {
   static const String head_constest = '/head_constest';
   static const String headTrack = '/head_track';
   static const String headExercise = '/head_exercise';
+  static const String headAttendence = '/head_attendence';
 }

@@ -5,6 +5,7 @@ import 'package:a2sv_hub/features/contests/presentation/pages/contest_page.dart'
 import 'package:a2sv_hub/features/contests/presentation/pages/head_contest.dart';
 import 'package:a2sv_hub/features/contests/presentation/pages/profile.dart';
 import 'package:a2sv_hub/features/contests/presentation/pages/users.dart';
+import 'package:a2sv_hub/features/presentation/pages/attendence.dart';
 import 'package:a2sv_hub/features/presentation/pages/head_exercise.dart';
 import 'package:a2sv_hub/features/presentation/pages/head_problem.dart';
 import 'package:a2sv_hub/features/presentation/pages/head_track.dart';
@@ -64,5 +65,9 @@ final router = GoRouter(initialLocation: '/role', routes: <RouteBase>[
   GoRoute(
     path: Routes.headExercise,
     builder: (context, state) => HeadExercisPage(),
+  ),
+  GoRoute(
+    path: Routes.headAttendence,
+    builder: (context, state) => TakeAttendence(),
   ),
 ]);
